@@ -11,4 +11,8 @@ public enum FilterOperator
     Contains,
     StartsWith,
     EndsWith,
+    In,
+    NotIn,
+    IsNull,
+    IsNotNull
 }

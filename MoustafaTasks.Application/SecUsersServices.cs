@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MoustafaTasks.Application;
 
-public class SecUsersServices
+public class SecUsersServices : ISecUserService
 {
     private readonly IRepository<SecUser> _userRepository;
 
@@ -26,4 +26,5 @@ public class SecUsersServices
         };
         return await _userRepository.GetAll(filters, cancellationToken);
     }
+    
 }

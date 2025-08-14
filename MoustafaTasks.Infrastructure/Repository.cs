@@ -15,6 +15,12 @@ public class Repository<T> : IRepository<T> where T : class
         _context = context;
         _dbSet = _context.Set<T>();
     }
+
+    public IQueryable<T> AsQueryable()
+    {
+        return _dbSet.AsQueryable();
+    }
+
     public async Task<List<T>> GetAll(
         Expression<Func<T, bool>>[]? filters, CancellationToken cancellationToken, params Expression<Func<T, bool>>[]? includes)
     {
@@ -83,5 +89,10 @@ public class Repository<T> : IRepository<T> where T : class
         return await query.Where(lambda).ToListAsync();
 
 
+    }
+
+    public IQueryable<T> Where(Expression<Func<T, bool>> predicate)
+    {
+        return _dbSet.AsQueryable().Where(predicate);
     }
 }
