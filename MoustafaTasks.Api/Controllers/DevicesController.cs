@@ -21,8 +21,7 @@ namespace MoustafaTasks.Api.Controllers
             return Ok(
                 await _genericFilterService.GetAll(
                 new List<FilterQuery>() {
-                    new FilterQuery(filterQuery.PropertyName, Domain.Enums.FilterOperator.Equals, filterQuery.Value, Domain.Enums.LogicalOperator.And) ,
-                    new FilterQuery(filterQuery.PropertyName, Domain.Enums.FilterOperator.Equals, filterQuery.Value, Domain.Enums.LogicalOperator.Or)
+                    filterQuery
 
                 },
                 CancellationToken.None
